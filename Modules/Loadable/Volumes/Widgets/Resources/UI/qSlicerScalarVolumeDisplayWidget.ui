@@ -175,7 +175,7 @@
          <string>CT-AAA: View CT volume for AAA procedures.</string>
         </property>
         <property name="accessibleName">
-         <string>CT-Abdomen</string>
+         <string>CT-AAA</string>
         </property>
         <property name="text">
          <string/>
