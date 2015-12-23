@@ -352,11 +352,11 @@ void qSlicerScalarVolumeDisplayWidget::setPreset(const QString& presetName)
     window = 10000.;
     level = 6000.;
     }
-  else if (presetName == "CT-Abdomen")
+  else if (presetName == "CT-AAA")
     {
     colorNodeID = "vtkMRMLColorTableNodeGrey";
-    window = 350.;
-    level = 40.;
+    window = 800.;
+    level = 200.;
     }
   else if (presetName == "CT-Brain")
     {
