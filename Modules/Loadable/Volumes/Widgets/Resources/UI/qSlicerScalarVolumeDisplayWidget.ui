@@ -172,7 +172,7 @@
          </sizepolicy>
         </property>
         <property name="toolTip">
-         <string>CT-abdomen: View abdominal CT volume.</string>
+         <string>CT-AAA: View CT volume for AAA procedures.</string>
         </property>
         <property name="accessibleName">
          <string>CT-Abdomen</string>
@@ -182,7 +182,7 @@
         </property>
         <property name="icon">
          <iconset resource="../qSlicerVolumesModule.qrc">
-          <normaloff>:/Icons/WindowLevelPreset-Abdomen.png</normaloff>:/Icons/WindowLevelPreset-Abdomen.png</iconset>
+          <normaloff>:/Icons/WindowLevelPreset-AAA.png</normaloff>:/Icons/WindowLevelPreset-AAA.png</iconset>
         </property>
         <property name="iconSize">
          <size>
