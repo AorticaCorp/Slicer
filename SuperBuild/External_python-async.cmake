@@ -31,9 +31,11 @@ set(${proj}_WORKING_DIR \"${CMAKE_BINARY_DIR}/${proj}\")
 ExternalProject_Execute(${proj} \"install\" \"${PYTHON_EXECUTABLE}\" setup.py install)
 ")
 
+  set(_version "0.6.1")
+
   ExternalProject_Add(${proj}
     ${${proj}_EP_ARGS}
-    URL "https://pypi.python.org/packages/source/a/async/async-0.6.1.tar.gz"
+    URL "https://pypi.python.org/packages/source/a/async/async-${_version}.tar.gz"
     URL_MD5 "6f0e2ced1fe85f8410b9bde11be08587"
     SOURCE_DIR ${proj}
     BUILD_IN_SOURCE 1
@@ -42,6 +44,10 @@ ExternalProject_Execute(${proj} \"install\" \"${PYTHON_EXECUTABLE}\" setup.py in
     INSTALL_COMMAND ${CMAKE_COMMAND} -P ${_install_script}
     DEPENDS
       ${${proj}_DEPENDENCIES}
+    )
+
+  ExternalProject_GenerateProjectDescription_Step(${proj}
+    VERSION ${_version}
     )
 
 else()
