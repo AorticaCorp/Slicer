@@ -31,9 +31,11 @@ set(${proj}_WORKING_DIR \"${CMAKE_BINARY_DIR}/${proj}\")
 ExternalProject_Execute(${proj} \"install\" \"${PYTHON_EXECUTABLE}\" setup.py install)
 ")
 
+  set(_version "0.5.4")
+
   ExternalProject_Add(${proj}
     ${${proj}_EP_ARGS}
-    URL "http://pypi.python.org/packages/source/g/gitdb/gitdb-0.5.4.tar.gz"
+    URL "http://pypi.python.org/packages/source/g/gitdb/gitdb-${_version}.tar.gz"
     URL_MD5 "25353bb8d3ea527ba443dd88cd4e8a1c"
     SOURCE_DIR ${proj}
     BUILD_IN_SOURCE 1
@@ -42,6 +44,10 @@ ExternalProject_Execute(${proj} \"install\" \"${PYTHON_EXECUTABLE}\" setup.py in
     INSTALL_COMMAND ${CMAKE_COMMAND} -P ${_install_script}
     DEPENDS
       ${${proj}_DEPENDENCIES}
+    )
+
+  ExternalProject_GenerateProjectDescription_Step(${proj}
+    VERSION ${_version}
     )
 
 else()

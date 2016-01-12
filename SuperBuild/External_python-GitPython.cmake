@@ -16,9 +16,11 @@ endif()
 
 if(NOT ${CMAKE_PROJECT_NAME}_USE_SYSTEM_${proj})
 
+  set(_version "0.3.2.RC1")
+
   ExternalProject_Add(${proj}
     ${${proj}_EP_ARGS}
-    URL "https://pypi.python.org/packages/source/G/GitPython/GitPython-0.3.2.RC1.tar.gz"
+    URL "https://pypi.python.org/packages/source/G/GitPython/GitPython-${_version}.tar.gz"
     URL_MD5 "849082fe29adc653a3621465213cab96"
     SOURCE_DIR ${proj}
     BUILD_IN_SOURCE 1
@@ -27,6 +29,10 @@ if(NOT ${CMAKE_PROJECT_NAME}_USE_SYSTEM_${proj})
     INSTALL_COMMAND ${PYTHON_EXECUTABLE} setup.py install
     DEPENDS
       ${${proj}_DEPENDENCIES}
+    )
+
+  ExternalProject_GenerateProjectDescription_Step(${proj}
+    VERSION ${_version}
     )
 
   # See #3749 - Delete test files causing packaging to fail on windows

@@ -16,9 +16,11 @@ endif()
 
 if(NOT ${CMAKE_PROJECT_NAME}_USE_SYSTEM_${proj})
 
+  set(_version "2.2.1")
+
   ExternalProject_Add(${proj}
     ${${proj}_EP_ARGS}
-    URL "https://pypi.python.org/packages/source/c/chardet/chardet-2.2.1.tar.gz"
+    URL "https://pypi.python.org/packages/source/c/chardet/chardet-${_version}.tar.gz"
     URL_MD5 "4a758402eaefd0331bdedc7ecb6f452c"
     SOURCE_DIR ${proj}
     BUILD_IN_SOURCE 1
@@ -27,6 +29,10 @@ if(NOT ${CMAKE_PROJECT_NAME}_USE_SYSTEM_${proj})
     INSTALL_COMMAND ${PYTHON_EXECUTABLE} setup.py install
     DEPENDS
       ${${proj}_DEPENDENCIES}
+    )
+
+  ExternalProject_GenerateProjectDescription_Step(${proj}
+    VERSION ${_version}
     )
 
 else()

@@ -39,9 +39,11 @@ endif()
 
 if(NOT ${CMAKE_PROJECT_NAME}_USE_SYSTEM_${proj})
 
+  set(_version "0.9.8")
+
   ExternalProject_Add(${proj}
     ${${proj}_EP_ARGS}
-    URL "http://pydicom.googlecode.com/files/pydicom-0.9.8.tar.gz"
+    URL "http://pydicom.googlecode.com/files/pydicom-${_version}.tar.gz"
     URL_MD5 "e344ab5b38abeaa462ee79fa04c1c25f"
     SOURCE_DIR ${proj}
     BUILD_IN_SOURCE 1
@@ -53,6 +55,10 @@ if(NOT ${CMAKE_PROJECT_NAME}_USE_SYSTEM_${proj})
     INSTALL_COMMAND ${PYTHON_EXECUTABLE} setup.py install
     DEPENDS
       ${${proj}_DEPENDENCIES}
+    )
+
+  ExternalProject_GenerateProjectDescription_Step(${proj}
+    VERSION ${_version}
     )
 
 else()
